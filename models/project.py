@@ -13,6 +13,9 @@ class Project:
         self._description = description
         self._user_id = user_id
         self._tasks = []
+
+        if not title or not isinstance(title, str):
+            raise ValueError("Title must be a non-empty string")
         
         # Handle due_date as string or datetime
         if isinstance(due_date, str):

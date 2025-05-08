@@ -13,10 +13,13 @@ class Task:
         self._description = description
         self._project_id = project_id
         self._assigned_to = assigned_to
+        self._status = status
+        
+        if not title or not isinstance(title, str):
+            raise ValueError("Title must be a non-empty string")
         
         if status not in Task.VALID_STATUSES:
             raise ValueError(f"Status must be one of: {', '.join(Task.VALID_STATUSES)}")
-        self._status = status
     
     @property
     def id(self):
